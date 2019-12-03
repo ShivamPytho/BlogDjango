@@ -2,7 +2,8 @@ from django.shortcuts import render,HttpResponse
 
 # Create your views here.
 def blogHome(request):
-    return HttpResponse("This is blogHome: We Will be keep all the posts here")
-
+    return render(request, 'blog/bloghome.html')
 def blogPost(request, slug):
-    return HttpResponse(f" blogPost:{slug}")
+    return render(request, 'blog/blogpost.html')
+    #return render(request, (f"blog/blogpost.html:{slug}"))
+    
