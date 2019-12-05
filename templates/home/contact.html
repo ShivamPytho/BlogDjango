@@ -1,3 +1,28 @@
 {% extends 'base.html' %}
+ {% block title %} Conatct {% endblock title %}
+ {% block body %}
+ <div class="container my-3">
+ <h3>  Contact $Conder Admin </h3>
 
-this is a contact page
+ <form   method="post" action="/contact">
+ <div class="form-group">
+    <label for="exampleInputname">Name</label>
+    <input type="text" class="form-control" id="text" aria-describedby="emailHelp" placeholder="Name here">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+  </div>
+   <div class="form-group">
+    <label for="phone">Phone Number</label>
+    <input type="phone" class="form-control" id="phone" aria-describedby="emailHelp" placeholder="phone number">
+  </div>
+  <div class="form-group">
+    <label for="contant">Describe Your issue</label>
+    <textarea type="text" class="form-control" id="contant" cols='30' row="10" placeholder="Type here"></textarea>
+  </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+ {% endblock body %}
