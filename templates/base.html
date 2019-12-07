@@ -38,7 +38,18 @@
     </form>
   </div>
 </nav>
+<!-- Message alert start-->
+ {% for message in messages  %}
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+  <strong>Messsage: </strong> {{ message }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+ {% endfor %}
+<!--end -->
 {% block body %}
+
 {% endblock body %}
 
     <!-- Optional JavaScript -->
