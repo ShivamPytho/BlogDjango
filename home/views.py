@@ -9,7 +9,6 @@ def about(request):
     return render(request, 'home/about.html')
 
 def contact(request):
-    messages.error(request, 'Welcome to Contact')
     if request.method == 'POST':
         name = request.POST ['name']
         email = request.POST ['email']
