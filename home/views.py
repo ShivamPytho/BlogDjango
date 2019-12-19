@@ -14,7 +14,7 @@ def contact(request):
         email = request.POST ['email']
         phone = request.POST ['phone']
         describe = request.POST ['describe']
-        print(name, email, phone, describe)
+       #print(name, email, phone, describe)
         if len(name)<2 or len(email)<3 or len(phone)<10 or len(describe)<4:
             messages.error(request, "please fill the form correctly")
         else:
