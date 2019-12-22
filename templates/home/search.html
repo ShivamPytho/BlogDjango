@@ -2,14 +2,20 @@
  {% block title %} Search Result  {% endblock title %}
 {% block blogactive %} active  {% endblock blogactive %}
 {% block body %}
-<div class="container my-3">
+ 
+ <div class="container my-3">
     <h2>Search Result:</h2>
-    {% if allposts|length < 1 %}
-    <p>No Resutls found:</p>
-    Your Search query: <b>{{query}} </b> did not match any documents. <br>
-        Suggestions: <br>
-        try  different keywords.
+    {% if allpost|length < 1 %}
+    <p>No Result Found:</p>
+    Your Search:<b>{{query}}</b><br> did not match any doucments.<br>
+    Suggestions:
+    <ul>
+    <li>Make sure that all words are spelled correctly.</li>
+    <li>Try different keywords.</li>
+    <li>Try more general keywords.</li>
+    </ul>
     {% endif %}
+        <div class="row mb-2">
          {% for post in allpost %}
                 <div class="col-md-6">
                   <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
@@ -23,6 +29,6 @@
                   </div>
                 </div>
         {% endfor %}         
- 
- </div>
+ </div> 
+    
 {% endblock body %}
