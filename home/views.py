@@ -51,7 +51,7 @@ def signup(request):
         if len(username) >10:
             messages.error(request, "Username must be under 10 characters")
             return redirect("home/home.html")
-        if not username. ():
+        if not username.isalnum():
             messages.error(request, "Username should only contain letter and  number")
             return redirect("home/home.html")
         if password != password1:
