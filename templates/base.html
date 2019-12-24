@@ -59,88 +59,82 @@
     </button>
   </div>
   {% endfor %}
-  <!-- Login Modal -->
-  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
+ 
 
-        <div class="modal-header">
-          <h5 class="modal-title" id="loginModal">Login using your credentials</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-
-        <div class="modal-body">
-          <form action="/profile/login" method='post'><input type="hidden" name="csrfmiddlewaretoken"
-              value="Xnc5aUHELbx8ljlkwYTVq8vj9Bw2uN2efwuK90BVYGLA0j91b333HPyDJhwmVZx4">
-            <div class="form-group">
-              <label for="lusername">Username</label>
-              <input type="name" class="form-control" id="luname" placeholder="Enter your username" name="uname">
-            </div>
-            <div class="form-group">
-              <label for="password">Password</label>
-              <input type="password" class="form-control" id="lpassword" placeholder="Enter your password"
-                name="password">
-            </div>
-            <div class="g-recaptcha" data-sitekey="6LdvcqwUAAAAACmPYNVoiJA7D84xLSQQt5g9p10m"></div>
-            <input type="hidden" name="path" value="/">
-
-            <button type="submit" class="btn btn-danger mt-2" id="loginsubmit">Login</button>
-          </form>
-        </div>
+<!-- signUp Modal -->
+<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signupModalTitle">SignUp Here!!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="signup/" method="post">
+        {% csrf_token %}
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" class="form-control" id="username" name="username" placeholder="Enter Your User Name" required>
+  </div>
+  <div class="form-group">
+    <label for="fname">First Name</label>
+    <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter Your First Name" required>
+  </div>
+  <div class="form-group">
+    <label for="lname">Last Name</label>
+    <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter Your Last Name" required>
+  </div>
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
+  </div>
+  <div class="form-group">
+    <label for="password">Enter  Password</label>
+    <input type="password" class="form-control" id="password" name="password" placeholder="Enter Your Password Name" required>
+  </div>
+  <div class="form-group">
+    <label for="password1">Conform Password</label>
+    <input type="password" class="form-control" id="password1" name="password1" placeholder="Enter Password Again" required>
+  </div>
+   <button type="submit" class="btn btn-danger">Submit</button>
+</form>
+      </div>
+      <div class="modal-footer">
+       
       </div>
     </div>
   </div>
-
-  <!-- SignUp Modal -->
-  <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModal" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="signupModal">SignUp for an account</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-
-        <div class="modal-body">
-          <form name="contact" method="POST" action=""><input type="hidden" name="csrfmiddlewaretoken"
-              value="Xnc5aUHELbx8ljlkwYTVq8vj9Bw2uN2efwuK90BVYGLA0j91b333HPyDJhwmVZx4">
-            {% csrf_token %}
-            <div class="form-group">
-              <label for="uname">Username</label>
-              <input type="text" class="form-control" id="uname" placeholder="Enter your Username" name="uname">
-            </div>
-            <div class="form-group">
-              <label for="name">First Name</label>
-              <input type="text" class="form-control" id="fname" placeholder="Enter your First Name" name="fname">
-            </div>
-            <div class="form-group">
-              <label for="name">Last Name</label>
-              <input type="text" class="form-control" id="lname" placeholder="Enter your Last Name" name="lname">
-            </div>
-            <div class="form-group">
-              <label for="email">Your Email</label>
-              <input type="email" class="form-control" id="email" placeholder="Enter your Email" name="email">
-            </div>
-            <div class="form-group">
-              <label for="password">Choose a password</label>
-              <input type="password" class="form-control" id="password" placeholder="Choose a password" name="password">
-            </div>
-            <div class="form-group">
-              <label for="password2">Retype a password</label>
-              <input type="password" class="form-control" id="password2" placeholder="Retype your password"
-                name="password2">
-            </div>
-            <div class="g-recaptcha" data-sitekey="6LdvcqwUAAAAACmPYNVoiJA7D84xLSQQt5g9p10m"></div>
-            <input type="hidden" name="path" value="/">
-            <button type="submit" class="btn btn-danger mt-2">SignUp</button>
-          </form>
-        </div>
+</div>
+<!-- signUp Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModal">LogIn Here!!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" class="form-control" id="uname" name="uname" placeholder="Enter Your User Name" required>
+  </div>
+  <div class="form-group">
+    <label for="pass">Enter a Password</label>
+    <input type="password" class="form-control" id="pass" name="pass" placeholder="Enter Your Password " required>
+  </div>
+  <button type="submit" class="btn btn-danger">Submit</button>
+</form>
+      </div> <div class="modal-footer">
+        
       </div>
     </div>
   </div>
+</div>
   {% block body %}
 
   {% endblock body %}

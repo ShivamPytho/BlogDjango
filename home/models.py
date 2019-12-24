@@ -12,3 +12,17 @@ class Contact(models.Model):
     
     def __str__(self):
         return ' Message From ' + self.name + ' - ' + self.email
+class SignUp(models.Model):
+    sno = models.AutoField(primary_key=True)
+    uname = models.CharField(max_length=10)
+    fname = models.CharField(max_length=12)
+    lname = models.CharField(max_length=12)
+    email = models.EmailField(max_length=30)
+    password = models.CharField(max_length=12)
+
+    def __str__(self):
+        return ' SignUp From ' + self.uname + ' - ' + self.email
+    
+
+        
+    
