@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 from home.models import Contact, SignUp
 from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User  #database me user signup ke liya import karo
 from blog.models import POST
 # Create your views here.
@@ -66,3 +67,22 @@ def signup(request):
         return redirect('home/home.html')
     else:
         return render(request, "404 - not found")
+
+
+def hanidlLogin(request):
+    if request.method == 'POST':
+       loginusername = request.POST['loginusername']
+       loginpassword = request.POST['loginpassword']
+
+       user = authenticate(username=loginusername, password=loginpassword)
+       if user is None:
+           login(request, user)
+           messages.success(request, "login successful")
+           return redirect('home/home.html')
+       else:
+            messages.error(request, "invalid password and user")
+            return redirect('home/home.html')
+    return HttpResponse("hanidlLogin")
+
+def hanidlLogout(request):
+    return HttpResponse("hanidlLogout")
