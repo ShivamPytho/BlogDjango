@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
-from home.models import Contact, SignUp
+from home.models import Contact, signUp
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User  #database me user signup ke liya import karo
@@ -40,49 +40,45 @@ def search(request):
     return render(request, 'home/search.html', params)
 
 def signup(request):
-    if request.method == 'POST':
+     if request.method == 'POST':
         username = request.POST['username']
         fname = request.POST['fname']
         lname = request.POST['lname']
         email = request.POST['email']
         password = request.POST['password']
         password1 = request.POST['password1']
-        #print(uname,fname,lname,email,password)
-        #check for error input
-        if len(username) >10:
-            messages.error(request, "Username must be under 10 characters")
-            return redirect("home/home.html")
-        if not username.isalnum():
-            messages.error(request, "Username should only contain letter and  number")
-            return redirect("home/home.html")
-        if password != password1:
-            messages.error(request, "Password  do not match")
-            return redirect("home/home.html")
-        #Create the User
-        myuser = User.objects.create(username=username, email=email, password=password)
-        myuser.first_name = fname
-        myuser.last_name = lname
-        myuser.save()
+        print(username,fname,lname,email,password,password1)
+         #check for error input
+
+          #Create the User
+        #myuser = User.objects.create(username=username, email=email, password=password)
+        user = User(username=username,first_name=fname,last_name=lname,email=email,password=password)
+        #myuser.first_name = fname
+        #myuser.last_name = lname
+        user.save()
         messages.success(request, "your account has been successful created")
         return redirect('home/home.html')
-    else:
-        return render(request, "404 - not found")
-
+     return render(request, "404 - not found")
 
 def hanidlLogin(request):
     if request.method == 'POST':
        loginusername = request.POST['loginusername']
+       print(loginusername)
        loginpassword = request.POST['loginpassword']
 
-       user = authenticate(username=loginusername, password=loginpassword)
-       if user is None:
-           login(request, user)
-           messages.success(request, "login successful")
+       user1 = authenticate(username=loginusername, password=loginpassword)
+       print(user1)
+       if user1:
+           login(request, user1)
+           messages.success(request, "Successfully LogIn !!!")
            return redirect('home/home.html')
        else:
-            messages.error(request, "invalid password and user")
+            messages.error(request, "invalid Username And Password !!! ")
             return redirect('home/home.html')
-    return HttpResponse("hanidlLogin")
+    return render(request, "404 - not found")
+    
 
 def hanidlLogout(request):
-    return HttpResponse("hanidlLogout")
+    logout(request)
+    messages.success(request, "Successfully LogOut !!!")     
+    return redirect('home/home.html')
